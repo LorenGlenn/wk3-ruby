@@ -8,38 +8,49 @@ describe(Client) do
   end
 
   describe("#save") do
-  it("saves client to db") do
-    new_client = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
-    new_client.save()
-    expect(Client.all()).to(eq([new_client]))
+    it("saves client to db") do
+      new_client = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
+      new_client.save()
+      expect(Client.all()).to(eq([new_client]))
+    end
   end
-end
 
-describe("#name") do
-  it("returns name of client") do
-    new_client = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
-    expect(new_client.name()).to(eq("Kim"))
+  describe("#name") do
+    it("returns name of client") do
+      new_client = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
+      expect(new_client.name()).to(eq("Kim"))
+    end
   end
-end
 
-describe("#stylist_id") do
-  it("returns stylist_id of client") do
-    new_client = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
-    expect(new_client.stylist_id()).to(eq(1))
+  describe("#stylist_id") do
+    it("returns stylist_id of client") do
+      new_client = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
+      expect(new_client.stylist_id()).to(eq(1))
+    end
   end
-end
 
-describe("#phone") do
-  it("returns client phone") do
-    new_client = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
-    expect(new_client.phone()).to(eq("5555555"))
+  describe("#phone") do
+    it("returns client phone") do
+      new_client = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
+      expect(new_client.phone()).to(eq("5555555"))
+    end
   end
-end
 
-describe("#==") do
-  it("client is the same if all three properties are equal") do
-    client1 = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
-    client2 = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
-    expect(client1).to(eq(client2))
+  describe("#==") do
+    it("client is the same if all three properties are equal") do
+      client1 = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
+      client2 = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
+      expect(client1).to(eq(client2))
+    end
+  end
+
+  describe(".find") do
+    it("returns first client by name") do
+      new_client = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
+      new_client.save()
+      new_client2 = Client.new({:name => "Jim", :stylist_id => 2, :phone => "6666666"})
+      new_client2.save()
+      expect(Client.find(new_client2.id())).to(eq(new_client2))
+    end
   end
 end
