@@ -29,3 +29,11 @@ describe(Stylist) do
       expect(Stylist.all()).to(eq([stylist]))
     end
   end
+
+  describe("#==") do
+    it("stylists are the same if name and id are same") do
+      stylist1 = Stylist.new({:name => "Bob", :id => nil, :hours => "9-5"})
+      stylist2 = Stylist.new({:name => "Bob", :id => nil, :hours => "9-5"})
+      expect(stylist1).to(eq(stylist2))
+    end
+  end

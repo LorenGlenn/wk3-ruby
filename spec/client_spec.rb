@@ -35,3 +35,11 @@ describe("#phone") do
     expect(new_client.phone()).to(eq("5555555"))
   end
 end
+
+describe("#==") do
+  it("client is the same if all three properties are equal") do
+    client1 = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
+    client2 = Client.new({:name => "Kim", :stylist_id => 1, :phone => "5555555"})
+    expect(client1).to(eq(client2))
+  end
+end
