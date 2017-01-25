@@ -6,7 +6,6 @@ set(:show_exceptions, false)
 describe('add stylist', {:type => :feature}) do
   it('lets user add a new stylist') do
     visit('/')
-    click_link('Add New Stylist')
     fill_in('name', 'hours', :with =>'Kim', '9-5')
     click_button('Add Stylist')
     expect(page).to have_content('Stylist added')

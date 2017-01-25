@@ -1,0 +1,11 @@
+<% if @lists.any?() %>
+<p>Click on a list to see its tasks:</p>
+
+<ul>
+  <% @lists.each do |list| %>
+  <li><a href="/lists/<%= list.id() %>"><%= list.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no lists yet!</p>
+<% end %>
