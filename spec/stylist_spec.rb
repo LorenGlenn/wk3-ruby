@@ -47,3 +47,22 @@ describe(Stylist) do
       expect(Stylist.find(new_stylist2.id())).to(eq(new_stylist2))
     end
   end
+
+  describe("#update") do
+    it("saves updated stylist info in db") do
+      stylist = Stylist.new({:name => "Bob", :id => nil, :hours => "9-5"})
+      stylist.save()
+      stylist.update({:name => "Jim", :hours => "8-3"})
+      expect(stylist.name()).to(eq("Jim"))
+    end
+  end
+
+  describe("#delete") do
+    it("delete a specific stylist from the db") do
+      stylist = Stylist.new({:name => "Bob", :id => nil, :hours => "9-5"})
+      stylist.save()
+      stylist2 = Stylist.new({:name => "Jim", :id => nil, :hours => "9-1"})
+      stylist2.save()
+      stylist.delete()
+      expect(Stylist.all()).to(eq([stylist2]))
+    end
