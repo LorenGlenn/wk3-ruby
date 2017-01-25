@@ -72,4 +72,5 @@ describe(Client) do
       client.delete()
       expect(Client.all()).to(eq([client2]))
     end
+  end
 end

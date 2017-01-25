@@ -68,15 +68,15 @@ describe(Stylist) do
     end
   end
 
-    describe("#clients") do
-      it("return clients associated with stylist") do
-        new_stylist = Stylist.new({:name => "Bob", :id => nil, :hours => "9-5"})
-        new_stylist.save()
-        new_client = Client.new({:name => "Kim", :id => nil, :stylist_id => new_stylist.id(), :phone => "5555555"})
-        new_client.save()
-        new_client2 = Client.new({:name => "Jim", :id => nil, :stylist_id => new_stylist.id(), :phone => "6666666"})
-        new_client2.save()
-        expect(new_stylist.clients()).to(eq([new_client, new_client2]))
-      end
+  describe("#clients") do
+    it("return clients associated with stylist") do
+      new_stylist = Stylist.new({:name => "Bob", :id => nil, :hours => "9-5"})
+      new_stylist.save()
+      new_client = Client.new({:name => "Kim", :id => nil, :stylist_id => new_stylist.id(), :phone => "5555555"})
+      new_client.save()
+      new_client2 = Client.new({:name => "Jim", :id => nil, :stylist_id => new_stylist.id(), :phone => "6666666"})
+      new_client2.save()
+      expect(new_stylist.clients()).to(eq([new_client, new_client2]))
     end
+  end
 end
