@@ -8,7 +8,7 @@ describe('add stylist', {:type => :feature}) do
     visit('/')
     fill_in('name', 'hours', :with =>'Kim', '9-5')
     click_button('Add Stylist')
-    expect(page).to have_content('Stylist added')
+    expect(page).to have_content('Success!')
   end
 end
 
@@ -41,6 +41,6 @@ describe('adding a client to a stylist', {:type => :feature}) do
     visit("/stylist/#{new_stylist.id()}")
     fill_in("name", "phone" {:with => "Bob", "5555555"})
     click_button("Add client")
-    expect(page).to have_content("Client added")
+    expect(page).to have_content("Success!")
   end
 end
