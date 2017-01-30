@@ -12,6 +12,11 @@ get("/") do
   erb(:index)
 end
 
+get("/stylists") do
+  @stylists = Stylist.all()
+  erb(:stylists)
+end
+
 post("/stylists") do
   name = params.fetch("name")
   hours = params.fetch("hours")
@@ -27,16 +32,16 @@ get("/stylist/:id") do
 end
 
 post("/clients") do
-  name = params.fetch("name")
-  phone = params.fetch("phone")
+  name = params.fetch("client_name")
+  phone = params.fetch("client_phone")
   stylist_id = params.fetch("stylist_id").to_i()
-  client = Client.new({:name => name, :stylist_id => stylist_id, :phone => phone})
+  client = Client.new({:name => name, :stylist_id => stylist_id, :phone => phone, :id => nil})
   client.save()
   @stylist = Stylist.find(stylist_id)
   erb(:stylist)
 end
 
-get("/stylists_edit/:id") do
+get("/stylist_edit/:id") do
   @stylist = Stylist.find(params.fetch("id").to_i())
   erb(:stylist_edit)
 end

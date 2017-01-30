@@ -11,9 +11,9 @@ Backend for a hair salon, can keep track of all stylists and clients.
 
 In PSQL:
 
-CREATE DATABASE to_do;
-CREATE TABLE lists (id serial PRIMARY KEY, name varchar);
-CREATE TABLE tasks (id serial PRIMARY KEY, description varchar);
+CREATE DATABASE salon;
+CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, hours varchar);
+CREATE TABLE clients (id serial PRIMARY KEY, name varchar, phone varchar, stylist_id int);
 
 Clone repository and run $bundle in the command line followed by $ ruby app.rb
 

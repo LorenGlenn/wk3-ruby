@@ -22,8 +22,7 @@ class Client
   end
 
   define_method(:save) do
-    DB.exec("INSERT INTO clients (name, stylist_id, phone) VALUES ('#{@name}', #{@stylist_id}, '#{@hours}');")
-    @id = result.first().fetch("id").to_i()
+    result = DB.exec("INSERT INTO clients (name, stylist_id, phone) VALUES ('#{@name}', #{@stylist_id}, '#{@phone}');")
   end
 
   define_method(:==) do |another_client|
@@ -45,7 +44,7 @@ class Client
     @id = self.id()
     @stylist_id = self.stylist_id()
     @phone = attributes.fetch(:phone)
-    DB.exec("UPDATE clients SET name = '#{@name}', hours = '#{@hours}' WHERE id = #{@id};")
+    DB.exec("UPDATE clients SET name = '#{@name}', phone = '#{@phone}' WHERE id = #{@id};")
   end
 
   define_method(:delete) do
